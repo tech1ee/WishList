@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">WishList</string>
+    <string name="add_plus">Add +</string>
+    <string name="total">Total</string>
+    <string name="cancel">Cancel</string>
+    <string name="title">Title</string>
+    <string name="price">Price</string>
+    <string name="error_enter_title">Enter title</string>
+    <string name="error_enter_price">Enter price</string>
+    <string name="enter_value">Empty field</string>
+    <string name="wish_deleted">Wish deleted</string>
+    <string name="undo">Undo</string>
+    <string name="delete">Delete</string>
+    <string name="delete_wish_question">Delete wish?</string>
+</resources>

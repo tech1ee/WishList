@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorBackground">#93C6B9</color>
+    <color name="colorPrimaryDark">#639A8D</color>
+    <color name="colorAccent">#BCE5DB</color>
+    <color name="colorCard">#FEEFC8</color>
+    <color name="colorTextInputLayout" tools:override="true">@android:color/white</color>
+
+</resources>

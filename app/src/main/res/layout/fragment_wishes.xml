@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.example.wishlist.view.list.WishesFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.example.wishlist.view.list.WishesViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/wishes_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            app:layout_constraintBottom_toTopOf="@id/total_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_wish" />
+
+        <ImageView
+            android:id="@+id/total_background"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toTopOf="@id/add_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/total_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:text="@string/total"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/total_background"
+            app:layout_constraintStart_toStartOf="@id/total_background"
+            app:layout_constraintTop_toTopOf="@id/total_background" />
+
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:text="@={viewModel.totalPriceLiveData}"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/total_background"
+            app:layout_constraintEnd_toEndOf="@id/total_background"
+            app:layout_constraintTop_toTopOf="@id/total_background"
+            tools:text="$500" />
+
+        <ImageView
+            android:id="@+id/total_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:src="@android:color/black"
+            app:layout_constraintEnd_toEndOf="@id/total_price"
+            app:layout_constraintStart_toStartOf="@id/total_title"
+            app:layout_constraintTop_toBottomOf="@id/total_title" />
+
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/colorPrimaryDark"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:onClick="@{() -> fragment.newWish()}"
+            android:text="@string/add_plus"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
