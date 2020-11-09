@@ -9,7 +9,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SplashStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
     <style name="ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
         <item name="titleTextColor">@android:color/white</item>
+    </style>
+
+    <style name="TextInputOutlinedStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/text_input_outline</item>
+        <item name="boxStrokeColor">@color/text_input_outline</item>
     </style>
 </resources>

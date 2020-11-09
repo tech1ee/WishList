@@ -27,7 +27,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/title_text_input"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/TextInputOutlinedStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -50,10 +50,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/price_text_input"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/TextInputOutlinedStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="32dp"
                 android:hint="@string/price"
                 app:errorEnabled="true"
@@ -67,7 +66,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:text="@={viewModel.priceLiveData}" />
+                    android:text="@={viewModel.priceLiveData}"
+                    android:imeOptions="actionDone" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

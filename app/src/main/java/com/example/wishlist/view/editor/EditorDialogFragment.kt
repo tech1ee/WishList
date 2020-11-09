@@ -51,11 +51,11 @@ class EditorDialogFragment: DialogFragment() {
     override fun onResume() {
         super.onResume()
         context?.showKeyboard()
+        binding.titleEditText.requestFocus()
     }
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-//        context?.hideKeyboard()
         listener?.onEditorClosed()
     }
 
@@ -78,12 +78,6 @@ class EditorDialogFragment: DialogFragment() {
         val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
-    }
-
-    private fun Context.hideKeyboard() {
-        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
-        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
     }
 
     interface Listener {
