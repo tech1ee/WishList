@@ -15,18 +15,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wishlist.R
 import com.example.wishlist.databinding.FragmentWishesBinding
 import com.example.wishlist.entity.Wish
+import com.example.wishlist.view.MessageDialogFragment
 import com.example.wishlist.view.editor.EditorDialogFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class WishesFragment: Fragment() {
+class WishesFragment : Fragment() {
 
     private val viewModel by viewModel<WishesViewModel>()
-    private val adapter = WishesAdapter( { id -> openWishEditor(id) },
-        { wishes -> viewModel.onItemMoved(wishes) }, { wish -> showDeleteMessage(wish) } )
+    private val adapter = WishesAdapter({ id -> openWishEditor(id) },
+        { wishes -> viewModel.onItemMoved(wishes) }, { wish -> showDeleteMessage(wish) })
     private val touchCallback = WishTouchHelper(adapter)
     private val touchHelper = ItemTouchHelper(touchCallback)
     private lateinit var binding: FragmentWishesBinding
-    private val editorListener = object: EditorDialogFragment.Listener {
+    private val editorListener = object : EditorDialogFragment.Listener {
         override fun onEditorClosed() {
             viewModel.getAllWishes()
             context?.hideKeyboard()
@@ -82,23 +83,26 @@ class WishesFragment: Fragment() {
     }
 
     private fun showDeleteMessage(wish: Wish) {
-        AlertDialog.Builder(requireContext())
-            .setCancelable(false)
-            .setTitle(getString(R.string.delete))
-            .setMessage(getString(R.string.delete_wish_question))
-            .setPositiveButton(android.R.string.yes) { d, _ ->
-                viewModel.onItemDeleted(wish)
-                d.dismiss()
-            }
-            .setNegativeButton(android.R.string.no) { d, _ ->
+        val messageListener = object : MessageDialogFragment.Listener {
+            override fun onCancelClicked() {
                 viewModel.getAllWishes()
-                d.dismiss()
             }
-            .show()
+
+            override fun onOkClicked() {
+                viewModel.onItemDeleted(wish)
+            }
+        }
+        val dialog = MessageDialogFragment.newInstance(
+            getString(R.string.delete_wish_question),
+            getString(R.string.delete)
+        )
+        dialog.show(childFragmentManager, dialog.tag)
+        dialog.setListener(messageListener)
     }
 
     private fun Context.hideKeyboard() {
-        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }

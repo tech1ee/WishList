@@ -35,7 +35,7 @@
         <ImageView
             android:id="@+id/total_background"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:background="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@id/add_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +50,7 @@
             android:focusableInTouchMode="false"
             android:text="@string/total"
             android:textColor="@android:color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/total_background"
             app:layout_constraintStart_toStartOf="@id/total_background"
             app:layout_constraintTop_toTopOf="@id/total_background" />
@@ -64,7 +64,7 @@
             android:focusableInTouchMode="false"
             android:text="@={viewModel.totalPriceLiveData}"
             android:textColor="@android:color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/total_background"
             app:layout_constraintEnd_toEndOf="@id/total_background"
             app:layout_constraintTop_toTopOf="@id/total_background"
@@ -93,6 +93,7 @@
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -74,10 +74,12 @@
             <Button
                 android:id="@+id/cancel_button"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:background="@android:color/transparent"
                 android:onClick="@{() -> dialog.dismiss()}"
                 android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/save_button"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -85,10 +87,13 @@
             <Button
                 android:id="@+id/save_button"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:background="@color/colorPrimaryDark"
                 android:onClick="@{() -> viewModel.checkFields() ? dialog.dismiss() : null}"
                 android:text="@string/add_plus"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/cancel_button" />

@@ -18,6 +18,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:translationZ="10dp"
         android:onClick="@{() -> adapter.onItemClicked(wish.id)}"
         app:cardCornerRadius="10dp">
 
